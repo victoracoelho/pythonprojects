@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from pandas_datareader import data as wb
 
-bot = telepot.Bot('1104868879:AAH-AH2L7FJfR2n2gpuQORhrOxqYI7dn8Wc')
+bot = telepot.Bot('TOKEN')
 listabvsp = ['WEGE3.SA', 'PETR4.SA', 'VALE3.SA', 'BIDI11.SA', 'BPAC11.SA', 'MRFG3.SA', 'OIBR3.SA', 'EMBR3.SA',
                  'UGPA3.SA', 'TCSA3.SA', 'KLBN3.SA',
                  'GOLL4.SA', 'AZUL4.SA', 'POSI3.SA', 'VVAR3.SA', 'BRFS3.SA', 'BBSE3.SA', 'GOAU4.SA', 'GGBR4.SA', 'HGTX3.SA',
@@ -16,6 +16,7 @@ listabvsp = ['WEGE3.SA', 'PETR4.SA', 'VALE3.SA', 'BIDI11.SA', 'BPAC11.SA', 'MRFG
                  'POMO4.SA', 'LAME4.SA', 'QUAL3.SA', 'RENT3.SA', 'JHSF3.SA', 'BRDT3.SA', 'TIMP3.SA', 'TIET11.SA',
                  'GNDI3.SA', 'ELET6.SA', 'BEEF3.SA']
 
+# This function returns risk premium of a stock that was inputed by the user
 def capm(t):
     lista = ['^BVSP']
     ano_atual = datetime.now().date()
@@ -42,13 +43,13 @@ def capm(t):
         except:
             print('CARREGANDO DADOS...')
 
-
+# This function will receive a message and id by the user and save until call the capm function above
 def receber(msg):
     txt = msg['text'].upper()
     _id = msg['from']['id']
     nome = msg['from']['first_name']
     if txt == 'OI':
-        bot.sendMessage(chat_id=_id, text=f'Olá {nome}! Digite o ticker que deseja calcular o Prêmio de Risco: ')
+        bot.sendMessage(chat_id=_id, text=f'Olá {nome}! Digite o ticker do ativo para calcular o Prêmio de Risco: ')
     elif txt in listabvsp:
         bot.sendMessage(chat_id=_id, text=f'O prêmio de risco para {txt} é de aproximadamente {capm(txt):.2f}%')
     else:
