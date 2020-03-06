@@ -55,7 +55,7 @@ def receber(msg):
     else:
         bot.sendMessage(chat_id=_id, text='Digite oi para iniciar')
 
-
+# Message loop for the app
 bot.message_loop(receber)
 
 while True:
