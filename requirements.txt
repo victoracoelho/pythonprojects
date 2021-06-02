@@ -29,7 +29,7 @@ srsly==1.0.1
 telepot==12.7
 thinc==7.0.8
 tqdm==4.43.0
-urllib3==1.25.8
+urllib3==1.26.5
 wasabi==0.6.0
 wincertstore==0.2
 yarl==1.4.2
